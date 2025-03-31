@@ -45,7 +45,7 @@ contract DataType {
         fixedData = _data;
     }
 
-    function setDynamicData(bytes calldata _data) public {
+    function setDynamicData(bytes memory _data) public {
         dynamicData = _data;
     }
 
@@ -57,23 +57,23 @@ contract DataType {
         return string(dynamicData);
     }
 
-    function setState(uint _state) public {
-        require(_state <= 2, "Invalid state");
-        currentState = State(_state);
+    function setState(State _state) public {
+        require(uint(_state) <= 2, "Invalid state");
+        currentState = _state;
     }
 
     function getDetails()
         public
         view
         returns (
-            uint _positiveNumber,
-            int _negativeNumber,
-            bool _isActive,
-            address _wallet,
-            address _recipient,
-            bytes32 _fixedData,
-            bytes memory _dynamicData,
-            uint _currentState
+            uint,
+            int,
+            bool,
+            address,
+            address,
+            bytes32,
+            bytes memory,
+            State
         )
     {
         return (
@@ -84,7 +84,7 @@ contract DataType {
             recipient,
             fixedData,
             dynamicData,
-            uint(currentState)
+            currentState
         );
     }
 }
