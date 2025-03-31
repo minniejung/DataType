@@ -224,4 +224,24 @@ describe("DataType", function () {
       expect(details[7]).to.equal(2);
     });
   });
+
+  it("console log테스트", async function () {
+    const wallet = await contract.wallet();
+    const recipient = await contract.recipient();
+    const positiveNumber = await contract.positiveNumber();
+    const negativeNumber = await contract.negativeNumber();
+    const isActive = await contract.isActive();
+    const fixedData = await contract.fixedData();
+    const dynamicData = await contract.dynamicData();
+    const currentState = await contract.currentState();
+
+    console.log("wallet:", wallet);
+    console.log("recipient:", recipient);
+    console.log("positiveNumber:", positiveNumber);
+    console.log("negativeNumber:", negativeNumber);
+    console.log("isActive:", isActive);
+    console.log("fixedData:", fixedData);
+    console.log("dynamicData:", dynamicData);
+    console.log("currentState:", currentState);
+  });
 });
